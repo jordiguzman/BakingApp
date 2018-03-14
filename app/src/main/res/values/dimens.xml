@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="row_item_main_height">100dp</dimen>
+    <dimen name="margin_left_right_row_item_main">8dp</dimen>
+    <dimen name="margin_bottom_top_row_item_main">18dp</dimen>
+    <dimen name="image_view_height_row_item_main">100dp</dimen>
+</resources>

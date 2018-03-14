@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Backing App</string>
+    <string name="image_main">Image main</string>
+    <string name="nutella_pie">Nutella Pie</string>
+    <string name="image_recipe">Image recipe</string>
+    <string name="step">Step</string>
+    <string name="next">Next</string>
+</resources>
