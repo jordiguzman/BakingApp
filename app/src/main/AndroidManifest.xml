@@ -9,27 +9,32 @@
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
+        android:roundIcon="@drawable/logo_round"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".ui.DetailRecipes" />
-        <activity android:name=".ui.Splash"
+        <activity
+            android:name=".ui.Splash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.DetailIngredients"/>
+        <activity android:name=".ui.DetailIngredients" />
+        <activity android:name=".ui.IngredientsActivity"></activity>
     </application>
 
 </manifest>

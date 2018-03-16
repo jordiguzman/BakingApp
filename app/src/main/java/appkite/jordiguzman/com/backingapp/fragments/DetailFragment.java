@@ -58,6 +58,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
 
 
 
+
         return rootView;
     }
 
@@ -73,6 +74,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             if (mSimpleExoPlayer==null){
                 mSimpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity(), new DefaultTrackSelector());
                 mPlayerView.setPlayer(mSimpleExoPlayer);
+                if (getActivity()!=null)
                 mediaSource = new ExtractorMediaSource(Uri.parse(DetailIngredients.mStep.get(position).videoURL), new DefaultDataSourceFactory(
                         getActivity(), "string"), new DefaultExtractorsFactory(), null, null);
                 mSimpleExoPlayer.prepare(mediaSource);

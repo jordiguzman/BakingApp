@@ -15,14 +15,14 @@ public class Ingredients implements Parcelable {
     @SerializedName("measure")
     @Expose
     private String measure;
-    @SerializedName("ingredients")
+    @SerializedName("ingredient")
     @Expose
-    private String ingredients;
+    private String ingredient;
 
     private Ingredients(Parcel in) {
         quantity = in.readFloat();
         measure = in.readString();
-        ingredients = in.readString();
+        ingredient = in.readString();
     }
 
     static final Creator<Ingredients> CREATOR = new Creator<Ingredients>() {
@@ -46,10 +46,17 @@ public class Ingredients implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeFloat(quantity);
         dest.writeString(measure);
-        dest.writeString(ingredients);
+        dest.writeString(ingredient);
     }
 
 
-
-
+    public float quantity() {
+        return quantity;
+    }
+    public String measure(){
+        return measure;
+    }
+    public String ingredient(){
+        return ingredient;
+    }
 }

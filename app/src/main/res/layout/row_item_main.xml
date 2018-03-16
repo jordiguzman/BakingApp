@@ -26,12 +26,16 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_gravity="center"
+            android:shadowColor="@color/secondary_text"
+            android:shadowDx="12"
+            android:shadowDy="12"
+            android:shadowRadius="5"
             android:paddingLeft="@dimen/margin_left_right_row_item_main"
             android:background="@drawable/border"
             android:fontFamily="sans-serif"
             android:text="@string/nutella_pie"
             android:textColor="@color/primary_light"
-            android:textSize="52sp"
+            android:textSize="38sp"
             android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>

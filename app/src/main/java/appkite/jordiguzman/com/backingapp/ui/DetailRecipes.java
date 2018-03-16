@@ -15,7 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -33,9 +35,10 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
     private Recipe recipe;
     private Integer[] imageValues = {R.drawable.nutella_pie, R.drawable.brownie, R.drawable.yellow_cake
             , R.drawable.cheesecake};
-    private ArrayList<Step> steps;
-    private ArrayList<Ingredients> ingredients;
+    public static ArrayList<Step> steps;
+    public static ArrayList<Ingredients> ingredients;
     private String name;
+    private TextView tv_ingredients;
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -49,6 +52,8 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = findViewById(R.id.collapsing_detail);
+        tv_ingredients = findViewById(R.id.tv_ingredients);
+
 
 
 
@@ -66,6 +71,8 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
         assert recipe != null;
         steps= recipe.steps;
         name= recipe.name;
+        ingredients = recipe.ingredients;
+
         setTitle(name);
         String ingredients = "Steps";
         collapsingToolbarLayout.setTitle(ingredients);
@@ -78,6 +85,11 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
         mRecyclerView.setAdapter(mAdapterDetail);
 
 
+    }
+    public void clickIngredients(View view){
+        Intent intent = new Intent(this, IngredientsActivity.class);
+        intent.putExtra("name", name);
+        startActivity(intent);
     }
 
 

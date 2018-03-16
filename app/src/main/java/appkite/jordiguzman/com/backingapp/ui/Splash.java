@@ -16,22 +16,21 @@ import appkite.jordiguzman.com.backingapp.utils.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static appkite.jordiguzman.com.backingapp.ui.MainActivity.mRecipes;
 
 public class Splash extends AppCompatActivity {
 
-    private ApiInterface apiInterface;
+    public static ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         apiInterface = ApiClient.getApiClient()
                 .create(ApiInterface.class);
         delay();
         loadData();
+
     }
 
 
@@ -72,6 +71,7 @@ public class Splash extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public void onBackPressed() {

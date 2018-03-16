@@ -17,7 +17,7 @@ public class DetailIngredients extends AppCompatActivity {
     public static ArrayList<Ingredients> mIngredients;
     public static ArrayList<Step> mStep;
     private int position;
-    private final String LOG_TAG = DetailIngredients.class.getSimpleName();
+
 
 
     @Override

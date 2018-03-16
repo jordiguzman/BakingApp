@@ -17,7 +17,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="CardViewMain">
+    <style name="CardViewMain" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_marginLeft">10dp</item>
