@@ -23,6 +23,7 @@ public class IngredientsActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         String name = bundle.getString("name");
+        assert name != null;
         setTitle(getResources().getString(R.string.ingredients).concat(" ").concat(name));
         AdapterIngredients mAdapterIngredients = new AdapterIngredients(DetailRecipes.ingredients, this);
         mRecyclerView.setAdapter(mAdapterIngredients);

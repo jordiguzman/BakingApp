@@ -10,38 +10,69 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/tv_item_detail_ingredients"
+        android:id="@+id/tv_item_detail_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="6dp"
         android:gravity="center"
-        android:text="Titulo"
+        android:text="@string/title"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/player_video"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginTop="19dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_item_detail_ingredients" />
+        app:layout_constraintTop_toTopOf="@+id/tv_item_detail_title" />
 
 
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tv_item_detail_ingredients"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/margin_left_right_row_item_main"
+        android:text="@string/instructions"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_video" />
 
-        android:text="@string/next"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
+        <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_steps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="23dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginRight="38dp"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            app:fabColor="@color/colorPrimary"
+            app:fabElevation="15dp"
+            app:fabType="roundedSquare"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

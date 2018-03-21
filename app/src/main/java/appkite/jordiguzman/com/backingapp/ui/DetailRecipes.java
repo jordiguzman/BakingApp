@@ -17,7 +17,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -38,7 +37,6 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
     public static ArrayList<Step> steps;
     public static ArrayList<Ingredients> ingredients;
     private String name;
-    private TextView tv_ingredients;
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -52,7 +50,9 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = findViewById(R.id.collapsing_detail);
-        tv_ingredients = findViewById(R.id.tv_ingredients);
+
+
+
 
 
 
@@ -68,10 +68,20 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
             recipe = bundle.getParcelable("recipe");
 
         }
-        assert recipe != null;
-        steps= recipe.steps;
-        name= recipe.name;
-        ingredients = recipe.ingredients;
+
+
+       if (recipe != null){
+           steps= recipe.steps;
+           name= recipe.name;
+           ingredients = recipe.ingredients;
+       }else {
+           steps = MainActivity.mRecipes.get(position).steps;
+           name = MainActivity.mRecipes.get(position).name;
+           ingredients = MainActivity.mRecipes.get(position).ingredients;
+       }
+
+
+
 
         setTitle(name);
         String ingredients = "Steps";
@@ -131,6 +141,7 @@ public class DetailRecipes extends AppCompatActivity implements AdapterDetail.St
         intent.putExtra("position", position);
         startActivity(intent);
 
-
     }
+
+
 }

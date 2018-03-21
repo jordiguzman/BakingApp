@@ -13,11 +13,10 @@ import appkite.jordiguzman.com.backingapp.model.Step;
 public class DetailIngredients extends AppCompatActivity {
 
 
-    private String name;
     public static ArrayList<Ingredients> mIngredients;
     public static ArrayList<Step> mStep;
+    private String name;
     private int position;
-
 
 
     @Override
@@ -26,19 +25,17 @@ public class DetailIngredients extends AppCompatActivity {
         setContentView(R.layout.activity_detail_ingredients);
 
 
-
-
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
+        if (bundle != null) {
             mStep = bundle.getParcelableArrayList("steps");
             mIngredients = bundle.getParcelableArrayList("ingredients");
-            name= bundle.getString("name");
+            name = bundle.getString("name");
             position = bundle.getInt("position");
         }
 
 
         setTitle(name);
-        if (savedInstanceState==null){
+        if (savedInstanceState == null) {
             DetailFragment fragment = new DetailFragment();
             Bundle bundleToFragment = new Bundle();
             bundleToFragment.putInt("position", position);

@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
         setContentView(R.layout.activity_main);
         coordinatorLayout = findViewById(R.id.coordinator_layout);
 
-        recyclerView = findViewById(R.id.rv);
+        recyclerView = findViewById(R.id.rv_main);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
 
 
-        if (!isOnline()){
+        if (isOnline()){
             snackBar();
             return;
         }
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
                 .setAction("RETRY", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!isOnline()) {
+                        if (isOnline()) {
                             snackBar();
                             return;
                         }
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
+        return netInfo == null || !netInfo.isConnectedOrConnecting();
     }
 
 

@@ -42,8 +42,14 @@ public class AdapterDetail extends RecyclerView.Adapter<AdapterDetail.AdapterDet
     @Override
     public void onBindViewHolder(@NonNull AdapterDetailViewHolder holder, int position) {
 
-        holder.tv_item_detail_step.setText(mContext.getResources().getString(R.string.step).concat(" ").concat(String.valueOf(position +1)));
-        holder.tv_item_detail.setText(mSteps.get(position).shortDescription);
+        if (position==0){
+            holder.tv_item_detail_step.setText(mContext.getResources().getString(R.string.introduction));
+            holder.tv_item_detail.setText(mSteps.get(position).shortDescription);
+        }else {
+            holder.tv_item_detail_step.setText(mContext.getResources().getString(R.string.step).concat(" ").concat(String.valueOf(position)));
+            holder.tv_item_detail.setText(mSteps.get(position).shortDescription);
+        }
+
     }
 
     @Override
