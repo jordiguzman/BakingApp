@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.DetailIngredients"
+    tools:context=".ui.DetailRecipeActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
@@ -49,9 +49,9 @@
             android:id="@+id/tv_item_detail_ingredients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_left_right_row_item_main"
             android:layout_marginLeft="@dimen/margin_left_right_row_item_main"
             android:layout_marginRight="@dimen/margin_left_right_row_item_main"
-
             android:text="@string/instructions"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,10 +66,11 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="64dp"
         android:layout_marginStart="64dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:textSize="18sp"
         app:fabColor="@color/colorPrimary"
         app:fabType="roundedSquare"
+        app:fabText="@string/next"
         app:fabElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

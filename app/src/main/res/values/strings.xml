@@ -16,4 +16,6 @@
     <string name="controls">Video controls</string>
     <string name="controls_on">Video controls on</string>
     <string name="controls_off">Video controls off</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

@@ -7,25 +7,27 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="true">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.DetailRecipes"
-            android:parentActivityName=".ui.MainActivity"/>
+        <activity
+            android:name=".ui.DetailStepsActivity"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.Splash"
             android:theme="@style/AppTheme.NoActionBar">
@@ -36,13 +38,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.DetailIngredients"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".ui.DetailRecipes"/>
+            android:name=".ui.DetailRecipeActivity"
+            android:parentActivityName=".ui.DetailStepsActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.IngredientsActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".ui.DetailRecipes"/>
+            android:parentActivityName=".ui.DetailStepsActivity"
+            android:theme="@style/AppTheme" />
+
+        <receiver android:name=".widgets.BackingWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/backing_widget_provider_info" />
+        </receiver>
+
     </application>
 
 </manifest>

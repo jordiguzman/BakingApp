@@ -21,13 +21,13 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton;
 
 import appkite.jordiguzman.com.backingapp.R;
-import appkite.jordiguzman.com.backingapp.ui.DetailIngredients;
+import appkite.jordiguzman.com.backingapp.ui.DetailRecipeActivity;
 
 
-public class DetailFragment extends Fragment implements View.OnClickListener {
+public class DetailRecipeFragment extends Fragment implements View.OnClickListener {
 
-    public final String URL_NO_VIDEO = "https://firebasestorage.googleapis.com/v0/b/friendychat-1e0b0" +
-            ".appspot.com/o/video%2Fno_video.mp4?alt=media&token=8c8665e0-efda-4511-bc9e-aaff3fd7b355";
+    public final String URL_NO_VIDEO = "https://firebasestorage.googleapis.com/v0/b/friendychat-1e0b0.appspot." +
+            "com/o/video%2Fno_video.mp4?alt=media&token=16219a24-977e-44ad-9dad-c96628aeca72";
     private int position;
     private SimpleExoPlayer mSimpleExoPlayer;
     private SimpleExoPlayerView mPlayerView;
@@ -41,8 +41,8 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        final View rootView = inflater.inflate(R.layout.detail_ingredients, container, false);
+
+        final View rootView = inflater.inflate(R.layout.detail_ingredients_fragment, container, false);
 
         if (getArguments() != null) {
             position = getArguments().getInt("position");
@@ -53,7 +53,6 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         tv_item_detail_ingredients = rootView.findViewById(R.id.tv_item_detail_ingredients);
         tv_title = rootView.findViewById(R.id.tv_item_detail_title);
         FloatingActionButton fbDetail = rootView.findViewById(R.id.fb_steps);
-        fbDetail.setFabText(getResources().getString(R.string.next));
         fbDetail.setOnClickListener(this);
 
 
@@ -75,14 +74,14 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     }
 
     public void populateDescription() {
-        if (DetailIngredients.mStep != null) {
-            tv_item_detail_ingredients.setText(DetailIngredients.mStep.get(position).description);
-            tv_title.setText(DetailIngredients.mStep.get(position).shortDescription);
+        if (DetailRecipeActivity.mStep != null) {
+            tv_item_detail_ingredients.setText(DetailRecipeActivity.mStep.get(position).description);
+            tv_title.setText(DetailRecipeActivity.mStep.get(position).shortDescription);
         }
     }
 
     public void initialitePlayer() {
-        if (DetailIngredients.mStep != null) {
+        if (DetailRecipeActivity.mStep != null) {
             if (mSimpleExoPlayer == null) {
                 mSimpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity(), new DefaultTrackSelector());
                 mPlayerView.setPlayer(mSimpleExoPlayer);
@@ -92,7 +91,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
 
     public void populatePlayerJson(){
         if (getActivity() != null)
-            mediaSource = new ExtractorMediaSource(Uri.parse(DetailIngredients.mStep.get(position).videoURL), new DefaultDataSourceFactory(
+            mediaSource = new ExtractorMediaSource(Uri.parse(DetailRecipeActivity.mStep.get(position).videoURL), new DefaultDataSourceFactory(
                     getActivity(), "string"), new DefaultExtractorsFactory(), null, null);
         mSimpleExoPlayer.prepare(mediaSource);
         mSimpleExoPlayer.setPlayWhenReady(true);
@@ -121,8 +120,8 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         }
         position++;
         initialitePlayer();
-        if (position >= DetailIngredients.mStep.size())position=0;
-        if (DetailIngredients.mStep.get(position).videoURL.length() == 0 && getActivity() != null) {
+        if (position >= DetailRecipeActivity.mStep.size())position=0;
+        if (DetailRecipeActivity.mStep.get(position).videoURL.length() == 0 && getActivity() != null) {
             noVideo=true;
              populatePlayerNoVideo();
              populateDescription();

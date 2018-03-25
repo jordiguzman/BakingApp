@@ -10,8 +10,10 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,19 +26,34 @@ import appkite.jordiguzman.com.backingapp.model.Recipe;
 public class MainActivity extends AppCompatActivity implements AdapterMain.ListItemClickListener{
 
 
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
     public static ArrayList<Recipe> mRecipes = new ArrayList<>();
     private CoordinatorLayout coordinatorLayout;
+    public static boolean tablet, landscape;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i(LOG_TAG, "onCreate");
         coordinatorLayout = findViewById(R.id.coordinator_layout);
 
+        tablet = getResources().getBoolean(R.bool.isTablet);
+        landscape = getResources().getBoolean(R.bool.landscape);
+
+
         recyclerView = findViewById(R.id.rv_main);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        if (!tablet){
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(layoutManager);
+        }else{
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }
+        if (landscape){
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }
+
         recyclerView.setHasFixedSize(true);
 
 
@@ -94,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
 
         Recipe recipe = mRecipes.get(clickedItemIndex);
 
-        Intent intent = new Intent(MainActivity.this, DetailRecipes.class);
+        Intent intent = new Intent(MainActivity.this, DetailStepsActivity.class);
         intent.putExtra("recipe", recipe);
         intent.putParcelableArrayListExtra("recipeList", mRecipes);
         intent.putExtra("position", clickedItemIndex);

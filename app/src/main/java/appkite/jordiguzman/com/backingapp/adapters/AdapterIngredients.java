@@ -9,19 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
-
 import appkite.jordiguzman.com.backingapp.R;
-import appkite.jordiguzman.com.backingapp.model.Ingredients;
-import appkite.jordiguzman.com.backingapp.ui.DetailRecipes;
+import appkite.jordiguzman.com.backingapp.ui.DetailStepsActivity;
 
 public class AdapterIngredients  extends RecyclerView.Adapter<AdapterIngredients.AdapterIngredientsViewHolder>{
 
-    private List<Ingredients> mIngredients = null;
     private Context mContext;
 
-    public AdapterIngredients(List<Ingredients> mIngredients, Context mContext) {
-        this.mIngredients = mIngredients;
+    public AdapterIngredients( Context mContext) {
+
         this.mContext = mContext;
     }
 
@@ -36,15 +32,15 @@ public class AdapterIngredients  extends RecyclerView.Adapter<AdapterIngredients
     @Override
     public void onBindViewHolder(@NonNull AdapterIngredientsViewHolder holder, int position) {
 
-        String quantity = String.valueOf(DetailRecipes.ingredients.get(position).quantity());
+        String quantity = String.valueOf(DetailStepsActivity.ingredients.get(position).quantity());
         holder.tv_item_quantity.setText(quantity);
-        holder.tv_item_measure.setText(DetailRecipes.ingredients.get(position).measure());
-        holder.tv_item_ingredient.setText(DetailRecipes.ingredients.get(position).ingredient());
+        holder.tv_item_measure.setText(DetailStepsActivity.ingredients.get(position).measure());
+        holder.tv_item_ingredient.setText(DetailStepsActivity.ingredients.get(position).ingredient());
     }
 
     @Override
     public int getItemCount() {
-        return mIngredients.size();
+        return DetailStepsActivity.ingredients.size();
     }
 
     class AdapterIngredientsViewHolder extends RecyclerView.ViewHolder{

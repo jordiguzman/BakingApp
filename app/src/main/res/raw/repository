@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:theme="@style/AppTheme"
     tools:ignore="MergeRootFrame"
-    tools:context="appkite.jordiguzman.com.backingapp.ui.DetailRecipes">
+    tools:context="appkite.jordiguzman.com.backingapp.ui.DetailStepsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_detail"
@@ -44,14 +43,12 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/steps_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
 
     </android.support.v4.widget.NestedScrollView>
 
@@ -62,12 +59,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_marginBottom="@dimen/margin_left_right_row_item_main"
+        android:layout_marginEnd="@dimen/margin_left_right_row_item_main"
         android:layout_marginRight="@dimen/margin_left_right_row_item_main"
         app:fabColor="@color/colorPrimary"
-        app:fabType="roundedSquare"
+        app:fabElevation="5dp"
         app:fabText="@string/ingredients"
         android:onClick="clickIngredients"
-        android:layout_marginEnd="@dimen/margin_left_right_row_item_main" />
+        app:fabType="roundedSquare" />
 
 
 </android.support.design.widget.CoordinatorLayout>
