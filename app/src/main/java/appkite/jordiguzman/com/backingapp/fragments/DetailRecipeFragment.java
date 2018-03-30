@@ -1,10 +1,12 @@
 package appkite.jordiguzman.com.backingapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,20 +22,35 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 import appkite.jordiguzman.com.backingapp.R;
+import appkite.jordiguzman.com.backingapp.model.Step;
 import appkite.jordiguzman.com.backingapp.ui.DetailRecipeActivity;
+import appkite.jordiguzman.com.backingapp.ui.MainActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static appkite.jordiguzman.com.backingapp.ui.MainActivity.landscape;
+import static appkite.jordiguzman.com.backingapp.ui.MainActivity.tablet;
 
 
 public class DetailRecipeFragment extends Fragment implements View.OnClickListener {
 
     public final String URL_NO_VIDEO = "https://firebasestorage.googleapis.com/v0/b/friendychat-1e0b0.appspot." +
             "com/o/video%2Fno_video.mp4?alt=media&token=16219a24-977e-44ad-9dad-c96628aeca72";
-    private int position;
-    private SimpleExoPlayer mSimpleExoPlayer;
-    private SimpleExoPlayerView mPlayerView;
+    private final String LOG_TAG = DetailRecipeFragment.class.getSimpleName();
+    public ArrayList<Step> steps;
+    public static int position;
+    @SuppressLint("StaticFieldLeak")
+    public static SimpleExoPlayer mSimpleExoPlayer;
+    @BindView(R.id.player_video)
+    SimpleExoPlayerView mPlayerView;
     private MediaSource mediaSource;
-    private TextView tv_item_detail_ingredients;
-    private TextView  tv_title;
+    @BindView(R.id.tv_item_detail_ingredients)
+    TextView tv_item_detail_ingredients;
+    @BindView(R.id.tv_item_detail_title)
+    TextView tv_title;
     private boolean isPlaying, noVideo;
 
 
@@ -42,30 +59,41 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        final View rootView = inflater.inflate(R.layout.detail_ingredients_fragment, container, false);
+        final View rootView = inflater.inflate(R.layout.detail_steps_fragment, container, false);
+        ButterKnife.bind(this, rootView);
+        tv_item_detail_ingredients.setMovementMethod(new ScrollingMovementMethod());
 
         if (getArguments() != null) {
             position = getArguments().getInt("position");
+            steps = getArguments().getParcelableArrayList("steps");
+
         }
+        MainActivity.isLandscape(getContext());
+        MainActivity.isTablet(getContext());
 
-        mPlayerView = rootView.findViewById(R.id.player_video);
-
-        tv_item_detail_ingredients = rootView.findViewById(R.id.tv_item_detail_ingredients);
-        tv_title = rootView.findViewById(R.id.tv_item_detail_title);
         FloatingActionButton fbDetail = rootView.findViewById(R.id.fb_steps);
+        if (!tablet){
+            fbDetail.setVisibility(View.VISIBLE);
+        }
+        if (landscape){
+            fbDetail.setVisibility(View.INVISIBLE);
+
+        }
         fbDetail.setOnClickListener(this);
 
 
-        if (savedInstanceState != null){
+
+        if (savedInstanceState != null) {
             position = savedInstanceState.getInt("position");
             noVideo = savedInstanceState.getBoolean("noVideo");
-            if (noVideo){
+
+            if (noVideo) {
                 populateDescription();
                 initialitePlayer();
                 populatePlayerNoVideo();
             }
         }
-        if (!noVideo){
+        if (!noVideo) {
             populateDescription();
             initialitePlayer();
             populatePlayerJson();
@@ -73,15 +101,16 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
         return rootView;
     }
 
+
     public void populateDescription() {
-        if (DetailRecipeActivity.mStep != null) {
-            tv_item_detail_ingredients.setText(DetailRecipeActivity.mStep.get(position).description);
-            tv_title.setText(DetailRecipeActivity.mStep.get(position).shortDescription);
+        if (steps != null) {
+            tv_item_detail_ingredients.setText(steps.get(position).description);
+            tv_title.setText(steps.get(position).shortDescription);
         }
     }
 
     public void initialitePlayer() {
-        if (DetailRecipeActivity.mStep != null) {
+        if (steps != null) {
             if (mSimpleExoPlayer == null) {
                 mSimpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity(), new DefaultTrackSelector());
                 mPlayerView.setPlayer(mSimpleExoPlayer);
@@ -89,20 +118,28 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
         }
     }
 
-    public void populatePlayerJson(){
+    public void populatePlayerJson() {
         if (getActivity() != null)
-            mediaSource = new ExtractorMediaSource(Uri.parse(DetailRecipeActivity.mStep.get(position).videoURL), new DefaultDataSourceFactory(
+            mediaSource = new ExtractorMediaSource(Uri.parse(steps.get(position).videoURL), new DefaultDataSourceFactory(
                     getActivity(), "string"), new DefaultExtractorsFactory(), null, null);
+
         mSimpleExoPlayer.prepare(mediaSource);
         mSimpleExoPlayer.setPlayWhenReady(true);
         mPlayerView.hideController();
         isPlaying = true;
-        noVideo= false;
+        noVideo = false;
+
     }
-    public void populatePlayerNoVideo(){
+
+    public void populatePlayerNoVideo() {
         if (getActivity() != null)
-        mediaSource = new ExtractorMediaSource(Uri.parse(URL_NO_VIDEO), new DefaultDataSourceFactory(
-                getActivity(), "string"), new DefaultExtractorsFactory(), null, null);
+            try{
+                mediaSource = new ExtractorMediaSource(Uri.parse(URL_NO_VIDEO), new DefaultDataSourceFactory(
+                        getActivity(), "string"), new DefaultExtractorsFactory(), null, null);
+            }catch (Exception e){
+            e.printStackTrace();
+            }
+
         mSimpleExoPlayer.prepare(mediaSource);
         mSimpleExoPlayer.setPlayWhenReady(true);
         mPlayerView.hideController();
@@ -115,16 +152,16 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
 
         if (isPlaying) {
             mSimpleExoPlayer.release();
-            mSimpleExoPlayer= null;
+            mSimpleExoPlayer = null;
             isPlaying = false;
         }
         position++;
         initialitePlayer();
-        if (position >= DetailRecipeActivity.mStep.size())position=0;
+        if (position >= steps.size()) position = 0;
         if (DetailRecipeActivity.mStep.get(position).videoURL.length() == 0 && getActivity() != null) {
-            noVideo=true;
-             populatePlayerNoVideo();
-             populateDescription();
+            noVideo = true;
+            populatePlayerNoVideo();
+            populateDescription();
             return;
         }
         populateDescription();
@@ -135,10 +172,12 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mSimpleExoPlayer.release();
-        mSimpleExoPlayer= null;
+        if (mSimpleExoPlayer != null){
+            mSimpleExoPlayer.release();
+        }
+        mSimpleExoPlayer = null;
         isPlaying = false;
-        noVideo=false;
+        noVideo = false;
     }
 
     @Override
@@ -147,6 +186,6 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
         outState.putInt("position", position);
         outState.putBoolean("noVideo", noVideo);
 
-
     }
+
 }

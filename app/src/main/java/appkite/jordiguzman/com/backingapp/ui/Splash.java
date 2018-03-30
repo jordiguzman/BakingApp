@@ -17,7 +17,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import static appkite.jordiguzman.com.backingapp.ui.MainActivity.mRecipes;
-
 public class Splash extends AppCompatActivity {
 
     public static ApiInterface apiInterface;
@@ -26,11 +25,12 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        // Call api interface
         apiInterface = ApiClient.getApiClient()
                 .create(ApiInterface.class);
-        delay();
         loadData();
-
+        delay();
     }
 
 
@@ -62,7 +62,7 @@ public class Splash extends AppCompatActivity {
         call.enqueue(new Callback<List<Recipe>>() {
             @Override
             public void onResponse(@NonNull Call<List<Recipe>> call, @NonNull Response<List<Recipe>> response) {
-                mRecipes = (ArrayList<Recipe>) response.body();
+               mRecipes = (ArrayList<Recipe>) response.body();
             }
 
             @Override

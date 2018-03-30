@@ -14,18 +14,23 @@ import android.view.ViewGroup;
 
 import appkite.jordiguzman.com.backingapp.R;
 import appkite.jordiguzman.com.backingapp.adapters.AdapterIngredients;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class IngredientsFragment extends Fragment{
 
+
+    @BindView(R.id.rv_ingredients)
+    RecyclerView mRecyclerView;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.activity_ingredients, container, false);
+        ButterKnife.bind(this, rootView);
 
-        RecyclerView mRecyclerView = rootView.findViewById(R.id.rv_ingredients);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
         AdapterIngredients mAdapterIngredients = new AdapterIngredients(getContext());

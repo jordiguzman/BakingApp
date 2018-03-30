@@ -31,6 +31,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.AdapterMainVie
 
     }
 
+
     public interface ListItemClickListener {
         void onListItemClicked(int clickedItemIndex);
     }

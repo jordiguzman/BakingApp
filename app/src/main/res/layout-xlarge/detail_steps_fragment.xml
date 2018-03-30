@@ -5,68 +5,72 @@
     android:id="@+id/container_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.DetailRecipeActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="89dp">
 
     <TextView
         android:id="@+id/tv_item_detail_title"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginTop="46dp"
         android:gravity="center"
-        android:text="@string/title"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/player_video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/player_video"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="19dp"
+        android:layout_height="400dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_item_detail_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_detail_title" />
 
 
     <TextView
         android:id="@+id/tv_item_detail_ingredients"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_left_right_row_item_main"
-        android:layout_marginLeft="@dimen/margin_left_right_row_item_main"
-        android:layout_marginRight="@dimen/margin_left_right_row_item_main"
-        android:text="@string/instructions"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
         android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="@dimen/model_margin_8dp"
+        android:padding="@dimen/model_margin_8dp"
+        android:background="@drawable/border_empty"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/player_video"
-        android:layout_marginStart="@dimen/margin_left_right_row_item_main" />
-
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="@dimen/model_margin_8dp" />
 
     <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
         android:id="@+id/fb_steps"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:gravity="center_horizontal"
+        android:layout_marginEnd="405dp"
+        android:layout_marginTop="259dp"
+        android:gravity="center"
         android:textSize="18sp"
-        app:fabColor="@color/colorPrimary"
+        android:visibility="gone"
+        app:fabColor="@color/colorAccent"
         app:fabElevation="5dp"
         app:fabText="@string/next"
         app:fabType="roundedSquare"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/player_video"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="405dp" />
 
 
 </android.support.constraint.ConstraintLayout>

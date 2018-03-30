@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="row_item_main_height">100dp</dimen>
-    <dimen name="margin_left_right_row_item_main">8dp</dimen>
+    <dimen name="model_margin_8dp">8dp</dimen>
     <dimen name="margin_bottom_top_row_item_main">18dp</dimen>
     <dimen name="image_view_height_row_item_main">100dp</dimen>
 
@@ -10,4 +10,11 @@ Refer to App Widget Documentation for margin information
 http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     -->
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="elevation">5dp</dimen>
+    <dimen name="width_linear_layout_detail_steps_600_land">500dp</dimen>
+    <dimen name="height_appbarlayout_detail_steps_600_land_port">250dp</dimen>
+    <dimen name="margin_top_coordinator_detail_steps_600_land_port">85dp</dimen>
+    <dimen name="width_linear_layout_detail_steps_600_port">300dp</dimen>
+
+
 </resources>

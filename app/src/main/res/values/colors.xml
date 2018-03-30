@@ -9,7 +9,9 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#212121</color>
     <color name="divider">#BDBDBD</color>
-
+    <color name="colorPrimary_translucid">#abff9800</color>
+    <color name="colorPrimary_translucid_plus">#1aff9800</color>
+    <color name="colorAccent_translucid">#42607d8b</color>
     <color name="text_card_view">#212121</color>
     <color name="translucid">#8131383b</color>
     <color name="white">#FFFFFF</color>

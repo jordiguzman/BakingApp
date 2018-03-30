@@ -2,19 +2,21 @@ package appkite.jordiguzman.com.backingapp.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.MenuItem;
 
 import appkite.jordiguzman.com.backingapp.R;
+import appkite.jordiguzman.com.backingapp.fragments.DetailRecipeFragment;
 import appkite.jordiguzman.com.backingapp.fragments.IngredientsFragment;
 
 public class IngredientsActivity extends AppCompatActivity {
 
-    private final String LOG_TAG = IngredientsActivity.class.getSimpleName();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredients);
-        Log.i(LOG_TAG, "onCreate");
+
 
 
         Bundle bundle = getIntent().getExtras();
@@ -31,8 +33,19 @@ public class IngredientsActivity extends AppCompatActivity {
         }
 
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                releaseExoPlayer();
+                IngredientsActivity.this.onBackPressed();
+                break;
 
-
-
+        }
+        return true;
+    }
+    public void releaseExoPlayer(){
+        if (DetailRecipeFragment.mSimpleExoPlayer != null)DetailRecipeFragment.mSimpleExoPlayer.release();
     }
 }

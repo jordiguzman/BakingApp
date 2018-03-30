@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:elevation="5dp">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -24,27 +25,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/quantity"
-                android:paddingLeft="@dimen/margin_left_right_row_item_main"
-                android:paddingRight="@dimen/margin_left_right_row_item_main"
-                android:paddingStart="@dimen/margin_left_right_row_item_main"
+                android:paddingLeft="@dimen/model_margin_8dp"
+                android:paddingRight="@dimen/model_margin_8dp"
+                android:paddingStart="@dimen/model_margin_8dp"
                 android:textColor="@color/primary_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/measure"
-                android:paddingLeft="@dimen/margin_left_right_row_item_main"
-                android:paddingRight="@dimen/margin_left_right_row_item_main"
-                android:paddingStart="@dimen/margin_left_right_row_item_main"
+                android:paddingLeft="@dimen/model_margin_8dp"
+                android:paddingRight="@dimen/model_margin_8dp"
+                android:paddingStart="@dimen/model_margin_8dp"
                 android:textColor="@color/primary_text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ingredient"
-                android:paddingLeft="@dimen/margin_left_right_row_item_main"
-                android:paddingRight="@dimen/margin_left_right_row_item_main"
-                android:paddingStart="@dimen/margin_left_right_row_item_main"
+                android:paddingLeft="@dimen/model_margin_8dp"
+                android:paddingRight="@dimen/model_margin_8dp"
+                android:paddingStart="@dimen/model_margin_8dp"
                 android:textColor="@color/primary_text"/>
 
 
@@ -60,27 +61,27 @@
                 android:id="@+id/tv_item_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/margin_left_right_row_item_main"
-                android:paddingRight="@dimen/margin_left_right_row_item_main"
-                android:paddingStart="@dimen/margin_left_right_row_item_main"
+                android:paddingLeft="@dimen/model_margin_8dp"
+                android:paddingRight="@dimen/model_margin_8dp"
+                android:paddingStart="@dimen/model_margin_8dp"
                 android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/tv_item_measure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/margin_left_right_row_item_main"
-                android:paddingRight="@dimen/margin_left_right_row_item_main"
-                android:paddingStart="@dimen/margin_left_right_row_item_main"
+                android:paddingLeft="@dimen/model_margin_8dp"
+                android:paddingRight="@dimen/model_margin_8dp"
+                android:paddingStart="@dimen/model_margin_8dp"
                 android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/tv_item_ingredient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/margin_left_right_row_item_main"
-                android:paddingRight="@dimen/margin_left_right_row_item_main"
-                android:paddingStart="@dimen/margin_left_right_row_item_main"
+                android:paddingLeft="@dimen/model_margin_8dp"
+                android:paddingRight="@dimen/model_margin_8dp"
+                android:paddingStart="@dimen/model_margin_8dp"
                 android:textColor="@color/secondary_text" />
 
 

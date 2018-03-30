@@ -3,16 +3,20 @@
     android:layout_width="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_height="300dp"
-    android:layout_marginLeft="@dimen/margin_left_right_row_item_main"
-    android:layout_marginRight="@dimen/margin_left_right_row_item_main"
+    android:background="@drawable/main_selector"
+    android:layout_marginLeft="@dimen/model_margin_8dp"
+    android:layout_marginRight="@dimen/model_margin_8dp"
     android:layout_marginBottom="@dimen/margin_bottom_top_row_item_main"
     android:layout_marginTop="@dimen/margin_bottom_top_row_item_main">
 
     <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        card_view:cardElevation="5dp"
-        card_view:cardUseCompatPadding="true">
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="6dp"
+        card_view:cardCornerRadius="3dp">
 
     <ImageView
         android:id="@+id/iv_main"
@@ -30,16 +34,12 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_gravity="center"
-            android:shadowColor="@color/secondary_text"
-            android:shadowDx="12"
-            android:shadowDy="12"
-            android:shadowRadius="5"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             android:background="@drawable/border"
             android:fontFamily="sans-serif"
             android:text="@string/nutella_pie"
-            android:textColor="@color/primary_light"
+            android:textColor="@color/white"
             android:textSize="38sp"
             android:textStyle="bold"
             android:paddingStart="40dp"/>
