@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -20,6 +20,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+
     <style name="CardViewMain" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">100dp</item>
@@ -39,6 +40,23 @@
     <style name="collapsedappbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="TextViewListIngredients">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/model_margin_8dp</item>
+        <item name="android:paddingRight">@dimen/model_margin_8dp</item>
+        <item name="android:paddingStart" tools:targetApi="jelly_bean_mr1">@dimen/model_margin_8dp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="TextViewListIngredientsValues">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">@dimen/model_margin_8dp</item>
+        <item name="android:paddingRight">@dimen/model_margin_8dp</item>
+        <item name="android:paddingStart" tools:targetApi="jelly_bean_mr1">@dimen/model_margin_8dp</item>
+        <item name="android:textColor">@color/secondary_text</item>
     </style>
 
 </resources>

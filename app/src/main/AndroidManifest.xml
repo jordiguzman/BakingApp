@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -19,15 +20,13 @@
             android:name=".ui.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-
-
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.Splash"
-            android:theme="@style/AppTheme.NoActionBar">
 
+        </activity>
+        <activity
+            android:name=".ui.Splash"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,8 +36,6 @@
         <activity
             android:name=".ui.DetailStepsActivity"
             android:parentActivityName=".ui.MainActivity" />
-
-
         <activity
             android:name=".ui.DetailRecipeActivity"
             android:parentActivityName=".ui.DetailStepsActivity"
@@ -50,14 +47,25 @@
 
         <receiver android:name=".widgets.BackingWidgetProvider">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="appkite.jordiguzman.com.backingapp.ACTION_DATA_UPDATED"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/backing_widget_provider_info" />
+
         </receiver>
 
+
+        <service android:name=".widgets.WidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:enabled="true"
+            android:exported="false"/>
+         <provider
+             android:authorities="appkite.jordiguzman.com.backingapp"
+             android:name=".data.IngredientsContentProvider"
+             android:exported="false"/>
     </application>
 
 </manifest>

@@ -29,6 +29,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import appkite.jordiguzman.com.backingapp.R;
@@ -40,7 +42,6 @@ import appkite.jordiguzman.com.backingapp.model.Recipe;
 import appkite.jordiguzman.com.backingapp.model.Step;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import jp.wasabeef.blurry.Blurry;
 
 import static appkite.jordiguzman.com.backingapp.ui.MainActivity.tablet;
 
@@ -66,7 +67,6 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
     @BindView(R.id.rv_detail)
     RecyclerView mRecyclerView;
     private Snackbar mSnackbar;
-
 
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -100,13 +100,14 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
 
 
         imageAndTextCollapsingToolbar();
-        imageBlurDetail();
+
 
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             position = bundle.getInt("position");
             recipe = bundle.getParcelable("recipe");
+
 
         }
         if (recipe != null){
@@ -119,7 +120,7 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
             name = MainActivity.mRecipes.get(position).name;
             ingredients = MainActivity.mRecipes.get(position).ingredients;
         }
-
+        imageDetail();
         collapsingToolbarLayout.setTitle(name);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -151,13 +152,11 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public void imageBlurDetail(){
+    public void imageDetail(){
         Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(),
                 imageValues[position]);
-
-        Blurry.with(this)
-                .async()
-                .from(bitmap)
+        Glide.with(this)
+                .load(bitmap)
                 .into(iv_detail);
     }
 
@@ -213,6 +212,7 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
                 mSnackbar.dismiss();
             }
         }
+
         if (tablet){
             showDetailRecipe();
             hideIngredients();
@@ -236,6 +236,8 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
         }
         rotateScreen = true;
     }
+
+
     private boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
@@ -271,4 +273,5 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
         super.onSaveInstanceState(outState);
         outState.putBoolean("rotateScreen", rotateScreen);
     }
+
 }

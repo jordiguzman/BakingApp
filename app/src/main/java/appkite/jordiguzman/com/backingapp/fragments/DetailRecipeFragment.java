@@ -31,7 +31,6 @@ import appkite.jordiguzman.com.backingapp.ui.MainActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static appkite.jordiguzman.com.backingapp.ui.MainActivity.landscape;
 import static appkite.jordiguzman.com.backingapp.ui.MainActivity.tablet;
 
 
@@ -75,10 +74,7 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
         if (!tablet){
             fbDetail.setVisibility(View.VISIBLE);
         }
-        if (landscape){
-            fbDetail.setVisibility(View.INVISIBLE);
 
-        }
         fbDetail.setOnClickListener(this);
 
 

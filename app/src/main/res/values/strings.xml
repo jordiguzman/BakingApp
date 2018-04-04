@@ -2,6 +2,7 @@
     <string name="app_name">Baking App</string>
     <string name="image_main">Image main</string>
     <string name="nutella_pie">Nutella Pie</string>
+    <string name="brownies">Brownies</string>
     <string name="image_recipe">Image recipe</string>
     <string name="step">Step</string>
     <string name="next">Next</string>
@@ -13,9 +14,10 @@
     <string name="instructions">Instructions</string>
     <string name="title">Title</string>
     <string name="introduction">Introduction</string>
-    <string name="controls">Video controls</string>
-    <string name="controls_on">Video controls on</string>
-    <string name="controls_off">Video controls off</string>
-    <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="image_widget">image_widget</string>
+    <string name="list_epmty">List Epmty</string>
+
 </resources>

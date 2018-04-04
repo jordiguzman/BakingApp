@@ -18,7 +18,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static appkite.jordiguzman.com.backingapp.ImageViewHasDrawableMatcher.hasDrawable;
 
 @RunWith(AndroidJUnit4.class)
-public class SplahTest {
+public class SplashTest {
 
     /**
      * It's only test I can do. Other test in MainActivity or others always not pass. Maybe why the data is not loaded yet...

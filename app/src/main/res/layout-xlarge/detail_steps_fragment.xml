@@ -8,30 +8,12 @@
     tools:context=".ui.DetailRecipeActivity"
     tools:layout_editor_absoluteY="89dp">
 
-    <TextView
-        android:id="@+id/tv_item_detail_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:layout_marginTop="46dp"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/player_video"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
 
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/player_video"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_item_detail_title" />
@@ -39,27 +21,26 @@
 
     <TextView
         android:id="@+id/tv_item_detail_ingredients"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/model_margin_8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/model_margin_8dp"
+        android:maxLines="16"
         android:padding="@dimen/model_margin_8dp"
-        android:background="@drawable/border_empty"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/player_video"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="@dimen/model_margin_8dp" />
 
     <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
         android:id="@+id/fb_steps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="405dp"
-        android:layout_marginTop="259dp"
+        android:layout_marginTop="116dp"
         android:gravity="center"
         android:textSize="18sp"
         android:visibility="gone"
@@ -67,10 +48,26 @@
         app:fabElevation="5dp"
         app:fabText="@string/next"
         app:fabType="roundedSquare"
-        app:layout_constraintEnd_toStartOf="@+id/player_video"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/player_video" />
+
+    <TextView
+        android:id="@+id/tv_item_detail_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/player_video"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="405dp" />
+        app:layout_constraintVertical_bias="0.51" />
 
 
 </android.support.constraint.ConstraintLayout>

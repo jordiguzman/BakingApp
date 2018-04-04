@@ -2,10 +2,12 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:elevation="5dp">
+    android:elevation="5dp"
+    tools:targetApi="lollipop">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -22,67 +24,37 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/quantity"
-                android:paddingLeft="@dimen/model_margin_8dp"
-                android:paddingRight="@dimen/model_margin_8dp"
-                android:paddingStart="@dimen/model_margin_8dp"
-                android:textColor="@color/primary_text"/>
+                style="@style/TextViewListIngredients"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/measure"
-                android:paddingLeft="@dimen/model_margin_8dp"
-                android:paddingRight="@dimen/model_margin_8dp"
-                android:paddingStart="@dimen/model_margin_8dp"
-                android:textColor="@color/primary_text" />
+                style="@style/TextViewListIngredients" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ingredient"
-                android:paddingLeft="@dimen/model_margin_8dp"
-                android:paddingRight="@dimen/model_margin_8dp"
-                android:paddingStart="@dimen/model_margin_8dp"
-                android:textColor="@color/primary_text"/>
+                style="@style/TextViewListIngredients"
+                android:text="@string/ingredient" />
 
 
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_item_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/model_margin_8dp"
-                android:paddingRight="@dimen/model_margin_8dp"
-                android:paddingStart="@dimen/model_margin_8dp"
-                android:textColor="@color/secondary_text" />
+                style="@style/TextViewListIngredientsValues" />
 
             <TextView
                 android:id="@+id/tv_item_measure"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/model_margin_8dp"
-                android:paddingRight="@dimen/model_margin_8dp"
-                android:paddingStart="@dimen/model_margin_8dp"
-                android:textColor="@color/secondary_text" />
+                style="@style/TextViewListIngredientsValues" />
 
             <TextView
                 android:id="@+id/tv_item_ingredient"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/model_margin_8dp"
-                android:paddingRight="@dimen/model_margin_8dp"
-                android:paddingStart="@dimen/model_margin_8dp"
-                android:textColor="@color/secondary_text" />
+                style="@style/TextViewListIngredientsValues" />
 
 
         </LinearLayout>

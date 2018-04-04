@@ -12,7 +12,6 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,16 +38,6 @@ public class SplashTestRecord {
 
     @Test
     public void splashTestRecord() {
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.tv_name), withText("Nutella Pie"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.RelativeLayout.class),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView.check(matches(withText("Nutella Pie")));
-
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.rv_main),
                         childAtPosition(
@@ -56,17 +45,7 @@ public class SplashTestRecord {
                                 0)));
         recyclerView.perform(actionOnItemAtPosition(0, click()));
 
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.tv_item_detail), withText("Starting prep"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView2.check(matches(withText("Starting prep")));
-
-        ViewInteraction textView3 = onView(
+        ViewInteraction textView = onView(
                 allOf(withId(R.id.fb_detail), withText("Ingredients"),
                         childAtPosition(
                                 allOf(withId(R.id.coordinator_layout),
@@ -75,7 +54,7 @@ public class SplashTestRecord {
                                                 0)),
                                 2),
                         isDisplayed()));
-        textView3.check(matches(withText("Ingredients")));
+        textView.check(matches(withText("Ingredients")));
 
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.fb_detail), withText("Ingredients"),
@@ -88,7 +67,7 @@ public class SplashTestRecord {
                         isDisplayed()));
         floatingActionButton.perform(click());
 
-        ViewInteraction textView4 = onView(
+        ViewInteraction textView2 = onView(
                 allOf(withId(R.id.tv_item_ingredient), withText("Graham Cracker crumbs"),
                         childAtPosition(
                                 childAtPosition(
@@ -96,7 +75,7 @@ public class SplashTestRecord {
                                         1),
                                 2),
                         isDisplayed()));
-        textView4.check(matches(withText("Graham Cracker crumbs")));
+        textView2.check(matches(withText("Graham Cracker crumbs")));
 
     }
 
