@@ -247,8 +247,8 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
 
     public void snackBar(){
         mSnackbar = Snackbar
-                .make(coordinatorLayout, "No network connection!", Snackbar.LENGTH_INDEFINITE)
-                .setAction("RETRY", new View.OnClickListener() {
+                .make(coordinatorLayout, getResources().getString(R.string.no_network), Snackbar.LENGTH_INDEFINITE)
+                .setAction(getResources().getString(R.string.retry), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (isOnline()) {

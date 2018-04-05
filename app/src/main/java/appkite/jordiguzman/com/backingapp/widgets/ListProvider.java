@@ -15,9 +15,10 @@ import appkite.jordiguzman.com.backingapp.data.IngredientsContract;
 
 public class ListProvider implements RemoteViewsService.RemoteViewsFactory {
     private ArrayList<ListItem> listItemList = new ArrayList<>();
-    private ArrayList<String> dataQuantity = new ArrayList<>();
-    private ArrayList<String> dataMeasure = new ArrayList<>();
+
     private ArrayList<String> dataIngredient = new ArrayList<>();
+
+
 
 
     private Context mContext = null;
@@ -41,23 +42,32 @@ public class ListProvider implements RemoteViewsService.RemoteViewsFactory {
 
         if (cursor != null){
             while (cursor.moveToNext()){
-                dataQuantity.add(cursor.getString(cursor.getColumnIndex(IngredientsContract.IngredientsEntry.COLUMN_QUANTITY)));
-                dataMeasure.add(cursor.getString(cursor.getColumnIndex(IngredientsContract.IngredientsEntry.COLUMN_MEASUSE)));
                 dataIngredient.add(cursor.getString(cursor.getColumnIndex(IngredientsContract.IngredientsEntry.COLUMN_INGREDIENT)));
-
-
             }
         }
         if (cursor != null)cursor.close();
 
-        for (int i=0; i<dataQuantity.size();i++){
+        for (int i=0; i<dataIngredient.size();i++){
             ListItem listItem = new ListItem();
-            listItem.quantity = mContext.getString(R.string.quantity).concat(" ").concat(dataQuantity.get(i)) ;
-            listItem.measure = mContext.getString(R.string.measure).concat(" ").concat(dataMeasure.get(i));
-            listItem.ingredients = mContext.getString(R.string.ingredient).concat(" ").concat(dataIngredient.get(i));
+            listItem.ingredients = dataIngredient.get(i);
+            switch (i){
+                case 0:
+                    listItem.recipe= mContext.getResources().getString(R.string.nutella_pie);
+                    break;
+                case 10:
+                    listItem.recipe= mContext.getResources().getString(R.string.brownies);
+                    break;
+                case 20:
+                    listItem.recipe= mContext.getResources().getString(R.string.yellowcake);
+                    break;
+                case 30:
+                    listItem.recipe = mContext.getResources().getString(R.string.cheesecake);
+                    break;
+            }
             listItemList.add(listItem);
         }
     }
+
 
 
     @Override
@@ -85,10 +95,8 @@ public class ListProvider implements RemoteViewsService.RemoteViewsFactory {
         final RemoteViews remoteViews = new RemoteViews(
                 mContext.getPackageName(), R.layout.list_row);
         ListItem listItem = listItemList.get(position);
-
-         remoteViews.setTextViewText(R.id.quantity, listItem.quantity);
-         remoteViews.setTextViewText(R.id.measure, listItem.measure);
-         remoteViews.setTextViewText(R.id.ingredients, listItem.ingredients);
+        remoteViews.setTextViewText(R.id.recipe, listItem.recipe);
+        remoteViews.setTextViewText(R.id.ingredients, listItem.ingredients);
         return remoteViews;
     }
 

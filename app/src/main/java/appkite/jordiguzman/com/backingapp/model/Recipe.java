@@ -11,11 +11,11 @@ public class Recipe implements Parcelable{
     public String name;
     public ArrayList<Ingredients> ingredients= null;
     public ArrayList<Step> steps = null;
-    public Integer servings;
-    public String image;
+    private Integer servings;
+    private String image;
 
 
-    protected Recipe(Parcel in) {
+    private Recipe(Parcel in) {
         id = in.readString();
         name = in.readString();
         ingredients = in.createTypedArrayList(Ingredients.CREATOR);

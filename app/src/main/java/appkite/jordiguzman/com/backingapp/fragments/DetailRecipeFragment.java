@@ -38,7 +38,6 @@ public class DetailRecipeFragment extends Fragment implements View.OnClickListen
 
     public final String URL_NO_VIDEO = "https://firebasestorage.googleapis.com/v0/b/friendychat-1e0b0.appspot." +
             "com/o/video%2Fno_video.mp4?alt=media&token=16219a24-977e-44ad-9dad-c96628aeca72";
-    private final String LOG_TAG = DetailRecipeFragment.class.getSimpleName();
     public ArrayList<Step> steps;
     public static int position;
     @SuppressLint("StaticFieldLeak")

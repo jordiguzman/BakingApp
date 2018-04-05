@@ -14,6 +14,36 @@
     <dimen name="height_appbarlayout_detail_steps_600_land_port">250dp</dimen>
     <dimen name="margin_top_coordinator_detail_steps_600_land_port">85dp</dimen>
     <dimen name="width_linear_layout_detail_steps_600_port">300dp</dimen>
+    <dimen name="margin_top_splash">119dp</dimen>
+    <dimen name="model_padding_12">12dp</dimen>
+    <dimen name="text_size_splash">54sp</dimen>
+    <dimen name="margin_bottom_splash">96dp</dimen>
+    <dimen name="margin_start_splash">72dp</dimen>
+    <dimen name="margin_top_splash_large">220dp</dimen>
+    <dimen name="text_size_splash_large">75sp</dimen>
+    <dimen name="margin_top_splash_600">77dp</dimen>
+    <dimen name="margin_top_splash_textview_600">68dp</dimen>
+    <dimen name="model_margin_top_6">6dp</dimen>
+    <dimen name="model_text_size_16">16sp</dimen>
+    <dimen name="margin_bottom_detail_steps">12dp</dimen>
+    <dimen name="margin_end_detail_steps">128dp</dimen>
+    <dimen name="model_text_size_18">18sp</dimen>
+    <dimen name="height_detail_steps_land">346dp</dimen>
+    <dimen name="margin_bottom_detail_steps_600">36dp</dimen>
+    <dimen name="heigth_detail_steps_600_land">400dp</dimen>
+    <dimen name="margin_bottom_detail_steps_600_land">192dp</dimen>
+    <dimen name="heigth_detail_steps_600_land_text">180dp</dimen>
+    <dimen name="margin_end_detail_steps_600_land">405dp</dimen>
+    <dimen name="margin_tom_detail_steps_600_land">259dp</dimen>
+    <dimen name="corner_radius">3dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="model_text_size_14">14sp</dimen>
+    <dimen name="model_text_size_38">38sp</dimen>
+    <dimen name="height_row_item">150dp</dimen>
+    <dimen name="padding_row_item">40dp</dimen>
+    <dimen name="model_text_size_50">50sp</dimen>
+    <dimen name="height_widget">60dp</dimen>
+    <dimen name="model_text_size_20">20sp</dimen>
 
 
 </resources>

@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
     @Nullable
     private BakingIdlingResource mIdlingResource;
     public static ArrayList<Recipe> mRecipes = new ArrayList<>();
-    public static ArrayList<String[]> dataIngredients = new ArrayList<>();
-
     public static ArrayList<Ingredients> ingredients;
     public static boolean tablet, landscape, portrait;
     private Snackbar mSnackbar;
@@ -107,8 +105,8 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
 
     public void snackBar(){
         mSnackbar = Snackbar
-                .make(coordinatorLayout, "No network connection!", Snackbar.LENGTH_INDEFINITE)
-                .setAction("RETRY", new View.OnClickListener() {
+                .make(coordinatorLayout, getResources().getString(R.string.no_network), Snackbar.LENGTH_INDEFINITE)
+                .setAction(getResources().getString(R.string.retry), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (isOnline()) {
@@ -195,21 +193,22 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
                 contentValues.put(IngredientsContract.IngredientsEntry.COLUMN_INGREDIENT,
                         mRecipes.get(i).ingredients.get(ii).ingredient());
                 getContentResolver().insert(IngredientsContract.IngredientsEntry.CONTENT_URI, contentValues);
-
             }
         }
-
-
     }
-
 
 
     private boolean checkDb(SQLiteDatabase sqLiteDatabase, String tableName) {
 
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + tableName, null);
 
-        return cursor.moveToFirst();
-
+        if (cursor.moveToFirst()){
+            cursor.close();
+            return false;
+        }else {
+            cursor.close();
+            return true;
+        }
 
     }
 

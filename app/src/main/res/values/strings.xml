@@ -3,6 +3,8 @@
     <string name="image_main">Image main</string>
     <string name="nutella_pie">Nutella Pie</string>
     <string name="brownies">Brownies</string>
+    <string name="yellowcake">Yellowcake</string>
+    <string name="cheesecake">Cheesecake</string>
     <string name="image_recipe">Image recipe</string>
     <string name="step">Step</string>
     <string name="next">Next</string>
@@ -19,5 +21,7 @@
     <string name="configure">Configure</string>
     <string name="image_widget">image_widget</string>
     <string name="list_epmty">List Epmty</string>
+    <string name="no_network">No network connection!</string>
+    <string name="retry">RETRY</string>
 
 </resources>

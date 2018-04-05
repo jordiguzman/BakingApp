@@ -24,9 +24,9 @@ public class Step implements Parcelable{
     public String videoURL;
     @SerializedName("thumbnailURL")
     @Expose
-    public String thumbnailURL;
+    private String thumbnailURL;
 
-    protected Step(Parcel in) {
+    private Step(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
         } else {
@@ -38,7 +38,7 @@ public class Step implements Parcelable{
         thumbnailURL = in.readString();
     }
 
-    public static final Creator<Step> CREATOR = new Creator<Step>() {
+    static final Creator<Step> CREATOR = new Creator<Step>() {
         @Override
         public Step createFromParcel(Parcel in) {
             return new Step(in);

@@ -13,10 +13,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/row_item_main_height"
         card_view:cardUseCompatPadding="true"
-        card_view:cardElevation="6dp"
-        card_view:cardCornerRadius="3dp">
+        card_view:cardElevation="@dimen/elevation"
+        card_view:cardCornerRadius="@dimen/corner_radius">
 
         <ImageView
             android:id="@+id/iv_main"
@@ -32,8 +32,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="@dimen/model_text_size_16"
+            android:layout_marginRight="@dimen/model_text_size_16"
             android:background="@drawable/border"
             android:fontFamily="sans-serif"
             android:paddingLeft="@dimen/model_margin_8dp"
@@ -41,7 +41,7 @@
             android:paddingStart="@dimen/model_margin_8dp"
             android:text="@string/nutella_pie"
             android:textColor="@color/white"
-            android:textSize="38sp"
+            android:textSize="@dimen/model_text_size_38"
             android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>
