@@ -3,6 +3,7 @@ package appkite.jordiguzman.com.backingapp.ui;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
     @Nullable
     private BakingIdlingResource mIdlingResource;
     public static ArrayList<Recipe> mRecipes = new ArrayList<>();
-    public static ArrayList<Ingredients> ingredients;
+    private int[] numIngredients = new int[4];
+    public static ArrayList<Ingredients> ingredients = new ArrayList<>();
     public static boolean tablet, landscape, portrait;
     private Snackbar mSnackbar;
     @BindView(R.id.rv_main)
@@ -74,17 +76,32 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
 
         recyclerView.setHasFixedSize(true);
 
+
         if (isOnline()){
             snackBar();
             return;
         }
 
         loadData();
+        dataNumIngredients();
 
+    }
+    private void dataNumIngredients(){
+        SharedPreferences.Editor sharedPreferences= getSharedPreferences("numIng", 0).edit();
+        for (int i =0; i< numIngredients.length; i++ ){
+            numIngredients[i] = mRecipes.get(i).ingredients.size();
+
+        }
+        sharedPreferences.putInt("numIngIdex0", numIngredients[0]);
+        sharedPreferences.putInt("numIngIdex1", numIngredients[1]);
+        sharedPreferences.putInt("numIngIdex2", numIngredients[2]);
+        sharedPreferences.putInt("numIngIdex3", numIngredients[3]);
+        sharedPreferences.apply();
     }
 
     public static void isTablet(Context context){
-        tablet = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE);
+        tablet = ((context.getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE);
 
     }
     public static void isLandscape(Context context){
@@ -177,10 +194,8 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
         String tableName = IngredientsContract.IngredientsEntry.TABLE_NAME;
 
          if (checkDb(db, tableName)){
-
              return;
          }
-
         ContentValues contentValues = new ContentValues();
 
         for (int i = 0; i < 4; i++) {
@@ -202,13 +217,7 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
 
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + tableName, null);
 
-        if (cursor.moveToFirst()){
-            cursor.close();
-            return false;
-        }else {
-            cursor.close();
-            return true;
-        }
+        return cursor.moveToNext();
 
     }
 

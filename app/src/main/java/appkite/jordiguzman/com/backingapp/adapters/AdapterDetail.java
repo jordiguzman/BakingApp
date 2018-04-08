@@ -65,6 +65,7 @@ public class AdapterDetail extends RecyclerView.Adapter<AdapterDetail.AdapterDet
         final TextView tv_item_detail, tv_item_detail_step;
 
 
+
         AdapterDetailViewHolder(View itemView) {
             super(itemView);
             tv_item_detail = itemView.findViewById(R.id.tv_item_detail);

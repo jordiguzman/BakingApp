@@ -153,10 +153,53 @@ public class DetailStepsActivity extends AppCompatActivity implements AdapterDet
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void imageDetail(){
+
         Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(),
                 imageValues[position]);
+        String urlImage = recipe.image;
+        switch (position){
+            case 0:
+                if (!urlImage.equals("")){
+                    populateImageUrl(urlImage);
+                }else {
+                    populateImageLocal(bitmap);
+                }
+                break;
+            case 1:
+                if (!urlImage.equals("")){
+                    populateImageUrl(urlImage);
+                }else {
+                    populateImageLocal(bitmap);
+                }
+                break;
+            case 2:
+                if (!urlImage.equals("")){
+                    populateImageUrl(urlImage);
+                }else {
+                    populateImageLocal(bitmap);
+                }
+                break;
+            case 3:
+                if (!urlImage.equals("")){
+                    populateImageUrl(urlImage);
+                }else {
+                    populateImageLocal(bitmap);
+                }
+                break;
+
+        }
+
+    }
+
+    private void populateImageLocal(Bitmap bitmap) {
         Glide.with(this)
                 .load(bitmap)
+                .into(iv_detail);
+    }
+
+    private void populateImageUrl(String urlImage) {
+        Glide.with(this)
+                .load(urlImage)
                 .into(iv_detail);
     }
 

@@ -12,7 +12,7 @@ public class Recipe implements Parcelable{
     public ArrayList<Ingredients> ingredients= null;
     public ArrayList<Step> steps = null;
     private Integer servings;
-    private String image;
+    public String image;
 
 
     private Recipe(Parcel in) {
@@ -59,5 +59,6 @@ public class Recipe implements Parcelable{
         }
         dest.writeString(image);
     }
+
 
 }

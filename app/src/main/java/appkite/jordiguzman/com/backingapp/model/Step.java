@@ -69,4 +69,7 @@ public class Step implements Parcelable{
         dest.writeString(thumbnailURL);
     }
 
+    public String thumbnailURL(){
+        return  thumbnailURL;
+    }
 }

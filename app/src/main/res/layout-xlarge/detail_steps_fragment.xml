@@ -5,17 +5,17 @@
     android:id="@+id/container_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetailRecipeActivity"
-    tools:layout_editor_absoluteY="89dp">
+    tools:context=".ui.DetailRecipeActivity">
 
     <TextView
         android:id="@+id/tv_item_detail_title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="@dimen/model_margin_8dp"
         android:layout_marginStart="@dimen/model_margin_8dp"
         android:layout_marginTop="@dimen/model_text_size_16"
+        android:padding="@dimen/model_padding_12"
         android:gravity="center"
         android:textSize="@dimen/model_text_size_16"
         android:textStyle="bold"
@@ -33,20 +33,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_item_detail_title" />
 
+    <ImageView
+        android:id="@+id/image_thumbnail"
+        android:layout_width="180dp"
+        android:layout_height="102dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/image_thumbnail"
+        android:src="@drawable/no_thumbnail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_video" />
 
     <TextView
         android:id="@+id/tv_item_detail_ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/model_margin_8dp"
-        android:layout_marginTop="@dimen/model_margin_8dp"
+        android:layout_marginTop="8dp"
         android:maxLines="16"
         android:padding="@dimen/model_margin_8dp"
         android:textSize="@dimen/model_text_size_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_video"
+        app:layout_constraintTop_toBottomOf="@+id/image_thumbnail"
+        app:layout_constraintVertical_bias="0.060000002"
         android:layout_marginRight="@dimen/model_margin_8dp" />
 
     <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton

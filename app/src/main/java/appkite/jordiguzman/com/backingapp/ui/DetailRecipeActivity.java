@@ -57,6 +57,7 @@ public class DetailRecipeActivity extends AppCompatActivity {
         }
 
 
+
         setTitle(name);
         if (savedInstanceState == null) {
                 DetailRecipeFragment fragment = new DetailRecipeFragment();

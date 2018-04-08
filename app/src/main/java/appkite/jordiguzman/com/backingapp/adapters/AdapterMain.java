@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import appkite.jordiguzman.com.backingapp.R;
@@ -22,6 +24,8 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.AdapterMainVie
     private List<Recipe> mReciples;
     final private ListItemClickListener mListItemClickListener;
     private Context mContext;
+    private TextView  tv_name;
+    private ImageView iv_main;
 
 
     public AdapterMain(List<Recipe> reciples, ListItemClickListener listItemClickListener, Context context){
@@ -54,30 +58,47 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.AdapterMainVie
 
         Recipe recipe = mReciples.get(position);
         String name = recipe.name;
-        holder.tv_name.setText(name);
-
+        String urlImage = recipe.image;
+         tv_name.setText(name);
 
             switch (position){
                 case 0:
-                    holder.iv_main.setImageResource(R.drawable.nutella_pie);
+                    if (!urlImage.equals("")){
+                        populateImage(urlImage);
+                    }else {
+                        iv_main.setImageResource(R.drawable.nutella_pie);
+                    }
                     break;
                 case 1:
-                    holder.iv_main.setImageResource(R.drawable.brownie);
+                    if (!urlImage.equals("")){
+                        populateImage(urlImage);
+                    }else {
+                        iv_main.setImageResource(R.drawable.brownie);
+                    }
                     break;
                 case 2:
-                    holder.iv_main.setImageResource(R.drawable.yellow_cake);
+                    if (!urlImage.equals("")){
+                        populateImage(urlImage);
+                    }else {
+                        iv_main.setImageResource(R.drawable.yellow_cake);
+                    }
                     break;
                 case 3:
-                    holder.iv_main.setImageResource(R.drawable.cheesecake);
+                    if (!urlImage.equals("")){
+                        populateImage(urlImage);
+                    }else {
+                        iv_main.setImageResource(R.drawable.cheesecake);
+                    }
                     break;
             }
 
-
-
-
-
     }
 
+    private void populateImage(String urlImage){
+        Glide.with(mContext)
+                .load(urlImage)
+                .into(iv_main);
+    }
     @Override
     public int getItemCount() {
         return mReciples.size();
@@ -85,8 +106,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.AdapterMainVie
 
     public class AdapterMainViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-         TextView  tv_name;
-         ImageView iv_main;
+
 
         AdapterMainViewHolder(View itemView) {
             super(itemView);

@@ -23,5 +23,7 @@
     <string name="list_epmty">List Epmty</string>
     <string name="no_network">No network connection!</string>
     <string name="retry">RETRY</string>
+    <string name="image_thumbnail">Image Thumbnail</string>
+    <string name="choose_recipe">Choose recipe</string>
 
 </resources>
