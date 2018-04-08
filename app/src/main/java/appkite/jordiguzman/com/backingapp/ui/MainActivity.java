@@ -58,7 +58,10 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.ListI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        saveIngredientsData();
+        if (!isOnline()){
+            saveIngredientsData();
+        }
+
         getIdlingResource();
         isTablet(this);
         isLandscape(this);
